@@ -16,13 +16,8 @@
       </legend>
 
       <div class="row">
-        <label>First name:</label>
-        <input type="text" data-bind="textInput: firstName" />
-      </div>
-
-      <div class="row">
-        <label>Last name:</label>
-        <input data-bind="value: lastName" />
+        <label>Name:</label>
+        <input type="text" data-bind="textInput: name" />
       </div>
 
       <div
@@ -37,36 +32,25 @@
             pattern="@"
           />
         </div>
-        <div class="row">
-          <label>Location:</label>
-          <input data-bind="value: location" />
-        </div>
+      </div>
+
+      <div>
         <div class="row">
           <label>Age:</label>
           <input data-bind="value: age" required="required" />
         </div>
-      </div>
 
-      <div class="row">
-        <label>Subscriptions:</label>
-        <select
-          data-bind="value: subscription, options: subscriptionOptions, optionsCaption: 'Choose one...'"
-        ></select>
-      </div>
+        <div class="row">
+          <label>Newsletter:</label>
+          <select
+            data-bind="value: subscription, options: subscriptionOptions, optionsCaption: 'Choose one...'"
+          ></select>
+        </div>
 
-      <div class="row">
-        <label>Password:</label>
-        <input data-bind="value: password" type="password" />
-      </div>
-
-      <div class="row">
-        <label>Retype password:</label>
-        <input data-bind="value: confirmPassword" type="password" />
-      </div>
-
-      <div class="row">
-        <label>10 + 1 = </label>
-        <input data-bind="value: captcha" />
+        <div class="row">
+          <label>10 + 1 = </label>
+          <input data-bind="value: captcha" />
+        </div>
       </div>
     </fieldset>
 
@@ -75,9 +59,6 @@
       &nbsp;
       <button type="button" data-bind="click: reset">Reset</button>
       &nbsp;
-      <button type="button" data-bind="click: requireLocation">
-        Make 'Location' required
-      </button>
     </fieldset>
   </body>
   <script src="./js/main.js"></script>

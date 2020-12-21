@@ -24,8 +24,7 @@ var mustEqual = function(val, other) {
 };
 
 var viewModel = {
-    firstName: ko.observable().extend({minLength: 2, maxLength: 10}),
-    lastName: ko.observable().extend({required: true}),
+    name: ko.observable().extend({required: true, minLength: 2, maxLength: 10}),
     emailAddress: ko.observable().extend({
         // custom message
         required: {
@@ -33,10 +32,8 @@ var viewModel = {
         }
     }),
     age: ko.observable().extend({min: 1, max: 100}),
-    location: ko.observable(),
-    subscriptionOptions: ['Technology', 'Music'],
+    subscriptionOptions: ['daily', 'weekly', 'monthly'],
     subscription: ko.observable().extend({required: true}),
-    password: ko.observable(),
     captcha: ko.observable().extend({
         // custom validator
         validation: {
@@ -66,18 +63,5 @@ var viewModel = {
     }
 };
 
-viewModel.confirmPassword = ko.observable().extend({
-    validation: {
-        validator: mustEqual,
-        message: 'Passwords do not match.',
-        params: viewModel.password
-    }
-});
-
 viewModel.errors = ko.validation.group(viewModel);
-
-viewModel.requireLocation = function() {
-    viewModel.location.extend({required: true});
-};
-
 ko.applyBindings(viewModel);

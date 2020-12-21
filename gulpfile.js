@@ -1,5 +1,10 @@
 // Gulp.js configuration
 
+const devBuild = (process.env.NODE_ENV !== 'production');
+
+const src = 'src/';
+const build = 'build/';
+
 const
   gulp = require('gulp'),
   noop = require('gulp-noop'),
@@ -12,15 +17,12 @@ const
   imagemin = require('gulp-imagemin'),
   htmlclean = require('gulp-htmlclean'),
   browserify = require('gulp-browserify'),
-  devBuild = (process.env.NODE_ENV !== 'production'),
   stripdebug = devBuild ? null : require('gulp-strip-debug'),
-  sourcemaps = devBuild ? require('gulp-sourcemaps') : null,
-  src = 'src/',
-  build = 'build/';
+  sourcemaps = devBuild ? require('gulp-sourcemaps') : null;
 
 const sync = require("browser-sync").create();
 
-  // image processing
+// image processing
 function images() {
 
   const out = build + 'images/';
@@ -123,5 +125,4 @@ exports.js = js;
 
 // run all tasks
 exports.build = gulp.parallel(exports.html, exports.css, exports.js);
-
 exports.default = gulp.series(exports.build, exports.watch, exports.sync);
