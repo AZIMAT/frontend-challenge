@@ -12,32 +12,37 @@
 
     <fieldset>
       <legend class="well">
-        User: <strong data-bind="text: errors().length"></strong> errors
+        Welcome Dear: <strong data-bind="text: name"></strong>
+        <br />
+        Step:
+        <bold data-bind="text: stepIdentifier"></bold>
       </legend>
 
-      <div class="row">
-        <label>Name:</label>
-        <input type="text" data-bind="textInput: name" />
-      </div>
-
-      <div
-        class="row"
-        data-bind="validationOptions: { messageTemplate: 'customMessageTemplate' }"
-      >
+      <div data-bind="if: stepIdentifier() === 0">
         <div class="row">
-          <label>Email:</label>
-          <input
-            data-bind="value: emailAddress"
-            required="required"
-            pattern="@"
-          />
+          <label>Name:</label>
+          <input type="text" data-bind="textInput: name" />
+        </div>
+
+        <div
+          class="row"
+          data-bind="validationOptions: { messageTemplate: 'customMessageTemplate' }"
+        >
+          <div class="row">
+            <label>Email:</label>
+            <input
+              data-bind="value: emailAddress"
+              required="required"
+              pattern="@"
+            />
+          </div>
         </div>
       </div>
 
-      <div>
+      <div data-bind="if: stepIdentifier() === 1">
         <div class="row">
           <label>Age:</label>
-          <input data-bind="value: age" required="required" />
+          <input data-bind="value: age" type="number" required="required" />
         </div>
 
         <div class="row">
@@ -55,10 +60,22 @@
     </fieldset>
 
     <fieldset>
-      <button type="button" data-bind="click: submit">Submit</button>
-      &nbsp;
-      <button type="button" data-bind="click: reset">Reset</button>
-      &nbsp;
+      <div data-bind="if: loading() === false && successUser() === false">
+        <div data-bind="if: stepIdentifier() === 0">
+          <button type="button" data-bind="click: stepTwo">Next</button>
+        </div>
+        <div data-bind="if: stepIdentifier() === 1">
+          <button type="button" data-bind="click: stepOne">Back</button>
+          &nbsp;
+          <button type="button" data-bind="click: submit">Submit</button>
+        </div>
+        <br />
+        <button type="button" data-bind="click: reset">Reset</button>
+      </div>
+      <p data-bind="if: loading() === true">loading</p>
+      <p data-bind="if: successUser() === true">
+        your account created successfully
+      </p>
     </fieldset>
   </body>
   <script src="./js/main.js"></script>
