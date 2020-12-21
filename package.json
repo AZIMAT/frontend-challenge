@@ -4,19 +4,42 @@
   "description": "Sheypoor frontend challenge",
   "main": "sdk/index.js",
   "scripts": {
+    "dev": "NODE_ENV='development' gulp",
+    "start": "NODE_ENV='production' gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sheypoor/frontend-challenge.git"
+    "url": "git+https://github.com/AZIM_AT/frontend-challenge.git"
   },
-  "author": "Pendar Safari <pendar.safari@gmail.com>",
+  "author": "Azim Atefi <atefiazim1997@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sheypoor/frontend-challenge/issues"
+    "url": "https://github.com/AZIM_AT/frontend-challenge/issues"
   },
-  "homepage": "https://github.com/sheypoor/frontend-challenge#readme",
+  "homepage": "https://github.com/AZIM_AT/frontend-challenge#readme",
   "dependencies": {
+    "jquery": "^3.5.1",
+    "knockout": "^3.5.1",
+    "knockout.validation": "^2.0.4",
     "sdk": "file:sdk"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "8",
+    "browser-sync": "^2.26.13",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-serve": "^1.4.0",
+    "postcss-assets": "^5.0.0"
   }
 }
